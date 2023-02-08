@@ -1,0 +1,16 @@
+Step 1: create a Directory
+Step 2: In that directory: use Terminal to Enter:    npm init
+  that creates package.json
+Refer to sample package.json : add the start stanza:
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
+Make index.js file : put in the starter code for the application 
+  https://github.com/computationalknowledge/PetersONLINEEmporium/blob/main/index.js
+  
+Do npm i  on required NPMJS.com packages
+
+Then run     npm start      and application should start:
+Then you can     npm publish   to submit your app to npmjs.com
+Then Do the Happy Dance to Celebrate.
