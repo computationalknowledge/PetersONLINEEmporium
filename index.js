@@ -3,7 +3,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 const ejs = require('ejs');
-app.set('view engine','ejs');app.use(bodyParser.urlencoded({extended:true}));
+app.set('view engine','ejs');
+
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.set('view engine', 'pug');
 // Finally, render the view file in the route:
 
