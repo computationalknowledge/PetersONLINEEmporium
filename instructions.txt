@@ -1,0 +1,23 @@
+Thus, change the file extensions of about.html, contact.html, and post.html to about.ejs, contact.ejs and post.ejs. 
+In all, we should now have a views folder with the following EJS files (fig. 4.1). 
+Figure 4.1 Layouts To solve the problem of repetitive code (e.g. nav bar, footer) appearing 
+in each page, we will use the concept of a layout file. A layout file contains everything common in a page, 
+for e.g., navbar layout, header layout, footer layout, scripts layout. Each page will then include these layout 
+files in additional to their own content. This results in a much concise, readable and manageable file. 
+
+In index.ejs, notice the repeating elements that is, the <head>, <nav>, <footer> and <script> elements that also 
+
+appear in the other views. Our aim is to extract these portion of common HTML code into their own separate layout 
+
+files i.e. header.ejs, navbar.ejs, footer.ejs and scripts.ejs. We then just include the files that need them instead of 
+repeating the entire code thus reducing much code clutter. First, create a sub folder in views called layouts to store 
+these files. Next, extract the <head> HTML into header.ejs as shown below: <head> <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta name="description" content="">
+<meta name="author" content=""> <title>Clean Blog - Start Bootstrap Theme</title> <!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> 
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> 
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+rel='stylesheet' type='text/css'> <!-- Custom styles for this template --> <link href="css/clean-blog.min.css" rel="stylesheet"> </head>
+
+
