@@ -1,32 +1,39 @@
-const express = require('express')
-const app = express()
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('ces.db');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const app = express();
+const ejs = require('ejs');
+app.set('view engine','ejs');app.use(bodyParser.urlencoded({extended:true}));
+app.set('view engine', 'pug');
+// Finally, render the view file in the route:
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
-
-app.get('/help', function (req, res) {
-  res.send('HELP FILE')
-})
-
-db.serialize(() => {
-    db.each("SELECT students.studentname, students.studentid, classes.classid, classes.classdatetime  " + 
-            " FROM enrollments, students, classes " +
-            "WHERE enrollments.studentid = students.studentid AND classes.classid = enrollments.classid", (err, row) => {
-        if (err) {
-            console.error(err.message);
-        } else {
-            console.log(row.studentname + " " + row.studentid + " " + row.classid + " " + row.classdatetime);
-        }
-    });
+app.get('/', function(req, res) {
+  res.render('index');
+});
+app.get('/', (req, res) => {
+    res.send(`
+    <form action="/form" method="post">
+      <input type="text" name="name" placeholder="Name" />
+      <input type="text" name="age" placeholder="Age" />
+      <input type="submit" value="Submit" />
+    </form>
+  `);
 });
 
-db.close((err) => {
-    if (err) {
-      console.error(err.message);
-    }
-});
+// Create a route for POST requests
+app.post('/form', function(req, res) {
+    // Retrieve form data from request body
+    const name = req.body.name;
+    const age = req.body.age;
+  
+    // Send back a response
+    res.send(`Hello, ${name}. You are ${age} years old.`);
+  });
 
-app.listen(3001)
+  // Assign port
+const port = 3000;
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
